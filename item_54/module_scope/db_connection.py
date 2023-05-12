@@ -30,7 +30,4 @@ class TestingDatabase(object):
 class RealDatabase(object):
     pass
 
-if __main__.TESTING:
-    Database = TestingDatabase
-else:
-    Database = RealDatabase
+Database = TestingDatabase if __main__.TESTING else RealDatabase

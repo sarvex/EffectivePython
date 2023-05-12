@@ -25,7 +25,7 @@ from time import sleep
 from datetime import datetime
 
 def log(message, when=datetime.now()):
-    print('%s: %s' % (when, message))
+    print(f'{when}: {message}')
 
 log('Hi there!')
 sleep(0.1)
@@ -42,7 +42,7 @@ def log(message, when=None):
             Defaults to the present time.
     """
     when = datetime.now() if when is None else when
-    print('%s: %s' % (when, message))
+    print(f'{when}: {message}')
 
 
 # Example 3

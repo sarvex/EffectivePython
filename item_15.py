@@ -23,9 +23,8 @@ from sys import stdout as STDOUT
 # Example 1
 def sort_priority(values, group):
     def helper(x):
-        if x in group:
-            return (0, x)
-        return (1, x)
+        return (0, x) if x in group else (1, x)
+
     values.sort(key=helper)
 
 

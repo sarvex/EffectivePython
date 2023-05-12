@@ -32,7 +32,7 @@ def sort_priority(numbers, group):
     return found[0]
 
 numbers = [8, 3, 1, 2, 5, 4, 7, 6]
-group = set([2, 3, 5, 7])
+group = {2, 3, 5, 7}
 found = sort_priority(numbers, group)
 print('Found:', found)
 print(numbers)

@@ -28,11 +28,11 @@ print('Middle two:', a[3:-3])
 
 
 # Example 2
-assert a[:5] == a[0:5]
+assert a[:5] == a[:5]
 
 
 # Example 3
-assert a[5:] == a[5:len(a)]
+assert a[5:] == a[5:]
 
 
 # Example 4

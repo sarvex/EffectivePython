@@ -42,8 +42,7 @@ print('Exit status', proc.poll())
 
 # Example 3
 def run_sleep(period):
-    proc = subprocess.Popen(['sleep', str(period)])
-    return proc
+    return subprocess.Popen(['sleep', str(period)])
 
 start = time()
 procs = []
@@ -92,11 +91,7 @@ for proc in procs:
 
 # Example 8
 def run_md5(input_stdin):
-    proc = subprocess.Popen(
-        ['md5'],
-        stdin=input_stdin,
-        stdout=subprocess.PIPE)
-    return proc
+    return subprocess.Popen(['md5'], stdin=input_stdin, stdout=subprocess.PIPE)
 
 
 # Example 9

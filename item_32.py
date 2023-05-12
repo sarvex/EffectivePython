@@ -26,7 +26,7 @@ class LazyDB(object):
         self.exists = 5
 
     def __getattr__(self, name):
-        value = 'Value for %s' % name
+        value = f'Value for {name}'
         setattr(self, name, value)
         return value
 
@@ -41,7 +41,7 @@ print('After: ', data.__dict__)
 # Example 3
 class LoggingLazyDB(LazyDB):
     def __getattr__(self, name):
-        print('Called __getattr__(%s)' % name)
+        print(f'Called __getattr__({name})')
         return super().__getattr__(name)
 
 data = LoggingLazyDB()
@@ -56,11 +56,11 @@ class ValidatingDB(object):
         self.exists = 5
 
     def __getattribute__(self, name):
-        print('Called __getattribute__(%s)' % name)
+        print(f'Called __getattribute__({name})')
         try:
             return super().__getattribute__(name)
         except AttributeError:
-            value = 'Value for %s' % name
+            value = f'Value for {name}'
             setattr(self, name, value)
             return value
 
@@ -75,8 +75,8 @@ try:
     class MissingPropertyDB(object):
         def __getattr__(self, name):
             if name == 'bad_name':
-                raise AttributeError('%s is missing' % name)
-            value = 'Value for %s' % name
+                raise AttributeError(f'{name} is missing')
+            value = f'Value for {name}'
             setattr(self, name, value)
             return value
 
@@ -130,7 +130,7 @@ class BrokenDictionaryDB(object):
         self._data = data
 
     def __getattribute__(self, name):
-        print('Called __getattribute__(%s)' % name)
+        print(f'Called __getattribute__({name})')
         return self._data[name]
 
 

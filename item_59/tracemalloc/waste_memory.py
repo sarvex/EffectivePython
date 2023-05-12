@@ -37,7 +37,4 @@ def get_data():
     return values
 
 def run():
-    deep_values = []
-    for _ in range(100):
-        deep_values.append(get_data())
-    return deep_values
+    return [get_data() for _ in range(100)]

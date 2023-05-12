@@ -30,7 +30,4 @@ class Win32Database(object):
 class PosixDatabase(object):
     pass
 
-if sys.platform.startswith('win32'):
-    Database = Win32Database
-else:
-    Database = PosixDatabase
+Database = Win32Database if sys.platform.startswith('win32') else PosixDatabase

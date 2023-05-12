@@ -119,9 +119,7 @@ print(book.average_grade('Albert Einstein'))
 
 
 # Example 9
-grades = []
-grades.append((95, 0.45))
-grades.append((85, 0.55))
+grades = [(95, 0.45), (85, 0.55)]
 total = sum(score * weight for score, weight in grades)
 total_weight = sum(weight for _, weight in grades)
 average_grade = total / total_weight
@@ -129,9 +127,7 @@ print(average_grade)
 
 
 # Example 10
-grades = []
-grades.append((95, 0.45, 'Great job'))
-grades.append((85, 0.55, 'Better next time'))
+grades = [(95, 0.45, 'Great job'), (85, 0.55, 'Better next time')]
 total = sum(score * weight for score, weight, _ in grades)
 total_weight = sum(weight for _, weight, _ in grades)
 average_grade = total / total_weight

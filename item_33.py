@@ -22,12 +22,12 @@ from sys import stdout as STDOUT
 
 # Example 1
 class Meta(type):
-    def __new__(meta, name, bases, class_dict):
+    def __new__(cls, name, bases, class_dict):
         orig_print = __builtins__.print
         print = pprint
-        print((meta, name, bases, class_dict))
+        print((cls, name, bases, class_dict))
         print = orig_print
-        return type.__new__(meta, name, bases, class_dict)
+        return type.__new__(cls, name, bases, class_dict)
 
 class MyClass(object, metaclass=Meta):
     stuff = 123
@@ -38,12 +38,11 @@ class MyClass(object, metaclass=Meta):
 
 # Example 3
 class ValidatePolygon(type):
-    def __new__(meta, name, bases, class_dict):
+    def __new__(cls, name, bases, class_dict):
         # Don't validate the abstract Polygon class
-        if bases != (object,):
-            if class_dict['sides'] < 3:
-                raise ValueError('Polygons need 3+ sides')
-        return type.__new__(meta, name, bases, class_dict)
+        if bases != (object,) and class_dict['sides'] < 3:
+            raise ValueError('Polygons need 3+ sides')
+        return type.__new__(cls, name, bases, class_dict)
 
 class Polygon(object, metaclass=ValidatePolygon):
     sides = None  # Specified by subclasses

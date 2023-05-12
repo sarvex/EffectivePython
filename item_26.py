@@ -28,10 +28,9 @@ class ToDictMixin(object):
 
 # Example 2
     def _traverse_dict(self, instance_dict):
-        output = {}
-        for key, value in instance_dict.items():
-            output[key] = self._traverse(key, value)
-        return output
+        return {
+            key: self._traverse(key, value) for key, value in instance_dict.items()
+        }
 
     def _traverse(self, key, value):
         if isinstance(value, ToDictMixin):

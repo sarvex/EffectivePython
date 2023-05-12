@@ -69,10 +69,7 @@ def generate_inputs(data_dir):
 
 # Example 6
 def create_workers(input_list):
-    workers = []
-    for input_data in input_list:
-        workers.append(LineCountWorker(input_data))
-    return workers
+    return [LineCountWorker(input_data) for input_data in input_list]
 
 
 # Example 7
@@ -152,10 +149,7 @@ class GenericWorker(object):
 
     @classmethod
     def create_workers(cls, input_class, config):
-        workers = []
-        for input_data in input_class.generate_inputs(config):
-            workers.append(cls(input_data))
-        return workers
+        return [cls(input_data) for input_data in input_class.generate_inputs(config)]
 
 
 # Example 13

@@ -30,7 +30,7 @@ def divide(a, b):
 assert divide(4, 2) == 2
 assert divide(0, 1) == 0
 assert divide(3, 6) == 0.5
-assert divide(1, 0) == None
+assert divide(1, 0) is None
 
 
 # Example 2
@@ -44,11 +44,10 @@ else:
 
 # Example 3
 x, y = 0, 5
-result = divide(x, y)
-if not result:
-    print('Invalid inputs')  # This is wrong!
-else:
+if result := divide(x, y):
     assert False
+else:
+    print('Invalid inputs')  # This is wrong!
 
 
 # Example 4

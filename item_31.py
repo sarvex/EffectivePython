@@ -84,10 +84,10 @@ print('Math:    %5r' % galileo.math_grade)
 
 # Example 6
 class Grade(object):
-    def __get__(*args, **kwargs):
+    def __get__(self, **kwargs):
         pass
 
-    def __set__(*args, **kwargs):
+    def __set__(self, **kwargs):
         pass
 
 class Exam(object):
@@ -154,8 +154,7 @@ class Grade(object):
         self._values = {}
 
     def __get__(self, instance, instance_type):
-        if instance is None: return self
-        return self._values.get(instance, 0)
+        return self if instance is None else self._values.get(instance, 0)
 
     def __set__(self, instance, value):
         if not (0 <= value <= 100):
@@ -170,8 +169,7 @@ class Grade(object):
     def __init__(self):
         self._values = WeakKeyDictionary()
     def __get__(self, instance, instance_type):
-        if instance is None: return self
-        return self._values.get(instance, 0)
+        return self if instance is None else self._values.get(instance, 0)
 
     def __set__(self, instance, value):
         if not (0 <= value <= 100):

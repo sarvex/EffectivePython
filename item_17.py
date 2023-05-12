@@ -23,11 +23,7 @@ from sys import stdout as STDOUT
 # Example 1
 def normalize(numbers):
     total = sum(numbers)
-    result = []
-    for value in numbers:
-        percent = 100 * value / total
-        result.append(percent)
-    return result
+    return [100 * value / total for value in numbers]
 
 
 # Example 2
@@ -64,11 +60,7 @@ print(list(it))  # Already exhausted
 def normalize_copy(numbers):
     numbers = list(numbers)  # Copy the iterator
     total = sum(numbers)
-    result = []
-    for value in numbers:
-        percent = 100 * value / total
-        result.append(percent)
-    return result
+    return [100 * value / total for value in numbers]
 
 
 # Example 7
@@ -80,11 +72,7 @@ print(percentages)
 # Example 8
 def normalize_func(get_iter):
     total = sum(get_iter())   # New iterator
-    result = []
-    for value in get_iter():  # New iterator
-        percent = 100 * value / total
-        result.append(percent)
-    return result
+    return [100 * value / total for value in get_iter()]
 
 
 # Example 9
@@ -114,11 +102,7 @@ def normalize_defensive(numbers):
     if iter(numbers) is iter(numbers):  # An iterator -- bad!
         raise TypeError('Must supply a container')
     total = sum(numbers)
-    result = []
-    for value in numbers:
-        percent = 100 * value / total
-        result.append(percent)
-    return result
+    return [100 * value / total for value in numbers]
 
 
 # Example 13

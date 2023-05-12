@@ -66,20 +66,14 @@ print('Opacity: %r' % opacity)
 
 # Example 6
 green = my_values.get('green', [''])
-if green[0]:
-    green = int(green[0])
-else:
-    green = 0
+green = int(green[0]) if green[0] else 0
 print('Green:   %r' % green)
 
 
 # Example 7
 def get_first_int(values, key, default=0):
     found = values.get(key, [''])
-    if found[0]:
-        found = int(found[0])
-    else:
-        found = default
+    found = int(found[0]) if found[0] else default
     return found
 
 

@@ -80,9 +80,7 @@ stats.print_stats()
 
 # Example 7
 def my_utility(a, b):
-    c = 1
-    for i in range(100):
-        c += a * b
+    c = 1 + sum(a * b for _ in range(100))
 
 def first_func():
     for _ in range(1000):

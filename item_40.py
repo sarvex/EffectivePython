@@ -71,11 +71,7 @@ def count_neighbors(y, x):
     w_ = yield Query(y + 0, x - 1)  # West
     nw = yield Query(y + 1, x - 1)  # Northwest
     neighbor_states = [n_, ne, e_, se, s_, sw, w_, nw]
-    count = 0
-    for state in neighbor_states:
-        if state == ALIVE:
-            count += 1
-    return count
+    return sum(1 for state in neighbor_states if state == ALIVE)
 
 
 # Example 7
@@ -115,13 +111,10 @@ def step_cell(y, x):
 # Example 10
 def game_logic(state, neighbors):
     if state == ALIVE:
-        if neighbors < 2:
+        if neighbors < 2 or neighbors > 3:
             return EMPTY     # Die: Too few
-        elif neighbors > 3:
-            return EMPTY     # Die: Too many
-    else:
-        if neighbors == 3:
-            return ALIVE     # Regenerate
+    elif neighbors == 3:
+        return ALIVE     # Regenerate
     return state
 
 
@@ -160,8 +153,7 @@ class Grid(object):
         self.height = height
         self.width = width
         self.rows = []
-        for _ in range(self.height):
-            self.rows.append([EMPTY] * self.width)
+        self.rows.extend([EMPTY] * self.width for _ in range(self.height))
 
     def __str__(self):
         output = ''
@@ -231,7 +223,7 @@ class ColumnPrinter(object):
 
 columns = ColumnPrinter()
 sim = simulate(grid.height, grid.width)
-for i in range(5):
+for _ in range(5):
     columns.append(str(grid))
     grid = live_a_generation(grid, sim)
 
@@ -248,7 +240,7 @@ grid.assign(3, 3, ALIVE)
 
 columns = ColumnPrinter()
 sim = simulate(grid.height, grid.width)
-for i in range(5):
+for _ in range(5):
     columns.append(str(grid))
     grid = live_a_generation(grid, sim)
 

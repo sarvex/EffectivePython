@@ -25,7 +25,7 @@ print('foo bar')
 
 
 # Example 2
-print('%s' % 'foo bar')
+print('foo bar')
 
 
 # Example 3

@@ -27,8 +27,7 @@ def delegated():
 
 def composed():
     yield 'A'
-    for value in delegated():  # yield from in Python 3
-        yield value
+    yield from delegated()
     yield 'B'
 
 print list(composed())

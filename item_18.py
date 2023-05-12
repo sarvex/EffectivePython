@@ -26,7 +26,7 @@ def log(message, values):
         print(message)
     else:
         values_str = ', '.join(str(x) for x in values)
-        print('%s: %s' % (message, values_str))
+        print(f'{message}: {values_str}')
 
 log('My numbers are', [1, 2])
 log('Hi there', [])
@@ -38,7 +38,7 @@ def log(message, *values):  # The only difference
         print(message)
     else:
         values_str = ', '.join(str(x) for x in values)
-        print('%s: %s' % (message, values_str))
+        print(f'{message}: {values_str}')
 
 log('My numbers are', 1, 2)
 log('Hi there')  # Much better
@@ -51,8 +51,7 @@ log('Favorite colors', *favorites)
 
 # Example 4
 def my_generator():
-    for i in range(10):
-        yield i
+    yield from range(10)
 
 def my_func(*args):
     print(args)
@@ -64,10 +63,10 @@ my_func(*it)
 # Example 5
 def log(sequence, message, *values):
     if not values:
-        print('%s: %s' % (sequence, message))
+        print(f'{sequence}: {message}')
     else:
         values_str = ', '.join(str(x) for x in values)
-        print('%s: %s: %s' % (sequence, message, values_str))
+        print(f'{sequence}: {message}: {values_str}')
 
 log(1, 'Favorites', 7, 33)      # New usage is OK
 log('Favorite numbers', 7, 33)  # Old usage breaks

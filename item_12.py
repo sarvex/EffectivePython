@@ -65,21 +65,13 @@ else:
 
 # Example 6
 def coprime(a, b):
-    for i in range(2, min(a, b) + 1):
-        if a % i == 0 and b % i == 0:
-            return False
-    return True
+    return not any(a % i == 0 and b % i == 0 for i in range(2, min(a, b) + 1))
 print(coprime(4, 9))
 print(coprime(3, 6))
 
 
 # Example 7
 def coprime2(a, b):
-    is_coprime = True
-    for i in range(2, min(a, b) + 1):
-        if a % i == 0 and b % i == 0:
-            is_coprime = False
-            break
-    return is_coprime
+    return not any(a % i == 0 and b % i == 0 for i in range(2, min(a, b) + 1))
 print(coprime2(4, 9))
 print(coprime2(3, 6))

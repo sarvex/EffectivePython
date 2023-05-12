@@ -31,9 +31,7 @@ print(x)
 
 
 # Example 2
-a = {}
-a['foo'] = 1
-a['bar'] = 2
+a = {'foo': 1, 'bar': 2}
 from random import randint
 
 # Randomly populate 'b' to cause hash conflicts
